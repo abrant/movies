@@ -1,20 +1,31 @@
-<p id="notice"><%= notice %></p>
+<h1>Movie Reviews:</h1>
 
-<p>
-  <b>Title:</b>
-  <%= @movie.title %>
-</p>
+<table>
+  <tr>
+    <td width="100" rowspan="2"><IMG SRC="/images/<%=@movie.image%>" WIDTH="460" HEIGHT="253" BORDER="0" align="center"></td>
+    <td width="300"><h2 align= "center"><%= @movie.title %></h2></td>
+  </tr>
+  <tr>
+    <td width="800" align="center"><%= @movie.description %></td>
+  </tr>
+</table>
 
-<p>
-  <b>Description:</b>
-  <%= @movie.description %>
-</p>
+<h2> Reviews </h2>
+<table>
+<% @movie.reviews.each do |review| %>
+  <tr>
+    <td><%= review.user_name %></td>
+    <td><%= review.text %></td>
+  </tr>
+<% end %>
+</table>
 
-<p>
-  <b>Image:</b>
-  <%= @movie.image %>
-</p>
-
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<p align="center"><h2>Review this movie!</h2></p>
+<%= form_for [@movie, @movie.reviews.build] do |f| %>
+  <p>
+    Your Name: <%= f.text_field :user_name %><br />
+    <%= f.text_area :text, :size => '35x5' "New Comment" %><br />
+  </p>
+  <%= f.submit "Post Comment" %>
+  <%end%>
+</div>

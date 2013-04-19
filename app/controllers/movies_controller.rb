@@ -1,4 +1,11 @@
 class MoviesController < ApplicationController
+  before_filter :authenticate, :only => [:destroy, :new, :edit, :destroy]
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |name, password|
+      name == "abrant" && password == "admin"
+    end
+  end
   # GET /movies
   # GET /movies.json
   def index

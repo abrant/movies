@@ -11,18 +11,13 @@
 <% @movies.each do |movie| %>
   <tr>
     <td><IMG SRC="/images/<%=movie.image%>" WIDTH="460" HEIGHT="253" BORDER="0" align="center"></td>
-    <td><h2 align = "Center"><%= movie.title %><h2></td>
+    <td><h2 align = "Center"><%= movie.title %></h2></td>
     <td align = "justify"><%= movie.description %></td>
-    <td><%= link_to 'READ REVIEWS', movie %></td>
+    <td align = "center"><%= link_to 'READ REVIEWS', movie %></td>
+    <td><%= link_to 'Edit', edit_movie_path(movie) %> <br> <%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-</table>
-<table>
-  <tr>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-</table>
 <% end %>
+</table>
 <br />
 
 <%= link_to 'New Movie', new_movie_path %>

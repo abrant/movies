@@ -1,5 +1,11 @@
 Movies::Application.routes.draw do
-  resources :movies
+  get "review/create"
+
+  get "review/destroy"
+
+  resources :movies do
+    resources :reviews
+  end
 
 
   # The priority is based upon order of creation:

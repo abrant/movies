@@ -2,26 +2,27 @@
 
 <table>
   <tr>
+    <th>Image</th>
     <th>Title</th>
     <th>Description</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
     <th></th>
   </tr>
 
 <% @movies.each do |movie| %>
   <tr>
-    <td><%= movie.title %></td>
-    <td><%= movie.description %></td>
-    <td><%= movie.image %></td>
-    <td><%= link_to 'Show', movie %></td>
+    <td><IMG SRC="/images/<%=movie.image%>" WIDTH="460" HEIGHT="253" BORDER="0" align="center"></td>
+    <td><h2 align = "Center"><%= movie.title %><h2></td>
+    <td align = "justify"><%= movie.description %></td>
+    <td><%= link_to 'READ REVIEWS', movie %></td>
+  </tr>
+</table>
+<table>
+  <tr>
     <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
     <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
 </table>
-
+<% end %>
 <br />
 
 <%= link_to 'New Movie', new_movie_path %>
